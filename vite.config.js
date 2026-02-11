@@ -5,19 +5,17 @@ export default defineConfig({
     lib: {
       entry: 'ad_consult_speed_dials.js',
       name: 'ADSpeeddials',
-      fileName: 'ad-speeddials',
-      // CHANGE: Use 'iife' instead of 'es'
-      formats: ['iife'] 
+      formats: ['iife'],
+      // We remove fileName here to let rollup handle it via output
     },
     rollupOptions: {
       external: ['@wxcc-desktop/sdk'],
       output: {
-        // This tells Vite: "When you see an import for the SDK, 
-        // use the global 'window.Desktop' object instead."
+        // This forces the output to be exactly 'ad-speeddials.js'
+        entryFileNames: 'ad-speeddials.js',
         globals: {
           '@wxcc-desktop/sdk': 'Desktop'
         },
-        // Ensure the file stays as a single self-executing script
         extend: true
       }
     }
