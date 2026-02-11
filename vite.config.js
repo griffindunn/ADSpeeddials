@@ -6,20 +6,19 @@ export default defineConfig({
       entry: 'ad_consult_speed_dials.js',
       name: 'ADSpeeddials',
       fileName: 'ad-speeddials',
-      formats: ['es'] // Force ES Module format which is cleaner for Webex
+      // CHANGE: Use 'iife' instead of 'es'
+      formats: ['iife'] 
     },
     rollupOptions: {
-      // 1. IGNORE these packages during build
-      external: [
-        '@wxcc-desktop/sdk', 
-        'lit', 
-        'lit-element'
-      ],
+      external: ['@wxcc-desktop/sdk'],
       output: {
-        // 2. Map imports to global variables (if needed for fallback)
+        // This tells Vite: "When you see an import for the SDK, 
+        // use the global 'window.Desktop' object instead."
         globals: {
           '@wxcc-desktop/sdk': 'Desktop'
-        }
+        },
+        // Ensure the file stays as a single self-executing script
+        extend: true
       }
     }
   }
