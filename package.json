@@ -1,0 +1,14 @@
+{
+  "name": "ad-speeddials",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "@wxcc-desktop/sdk": "latest" 
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
